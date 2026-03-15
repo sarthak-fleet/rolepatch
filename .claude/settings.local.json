@@ -56,7 +56,11 @@
       "Bash(vercel alias resume-tailor-rgfusmfqt-sarthak-agrawals-projects-5d4953f8.vercel.app craftresume.vercel.app 2>&1)",
       "Bash(vercel project ls 2>&1 | head -10)",
       "Bash(vercel domains add craftresume.vercel.app 2>&1)",
-      "Bash(vercel env rm NEXTAUTH_URL production --yes 2>&1 && echo \"https://craftresume.vercel.app\" | vercel env add NEXTAUTH_URL production 2>&1)"
+      "Bash(vercel env rm NEXTAUTH_URL production --yes 2>&1 && echo \"https://craftresume.vercel.app\" | vercel env add NEXTAUTH_URL production 2>&1)",
+      "Bash(find:*)",
+      "WebFetch(domain:sassmaker.com)",
+      "WebFetch(domain:www.sassmaker.com)",
+      "Bash(saasmaker:*)"
     ]
   }
 }
