@@ -1,11 +1,14 @@
 import { beforeEach,describe, expect, it } from 'vitest';
 
 import {
+  localListJobs,
   localGetFitScore,
   localGetInterviewStories,
   localListFitScores,
+  localSaveJob,
   localSaveFitScore,
   localSaveInterviewStories,
+  localUpdateJobStatus,
 } from '@/lib/local-storage';
 import type { FitScore, InterviewStory } from '@/lib/types';
 
@@ -103,5 +106,16 @@ describe('localInterviewStories', () => {
     const retrieved = localGetInterviewStories('job-1');
     expect(retrieved).toHaveLength(2);
     expect(retrieved[0].theme).toBe('New Theme');
+  });
+});
+
+describe('localJobs', () => {
+  it('preserves updated_at for guest job summaries', () => {
+    localSaveJob('job-1', 'Acme', 'Engineer', 'resume-1');
+    localUpdateJobStatus('job-1', 'applied');
+
+    const [job] = localListJobs();
+    expect(job.updated_at).toBeGreaterThanOrEqual(job.created_at);
+    expect(job.status).toBe('applied');
   });
 });

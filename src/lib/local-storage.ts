@@ -135,6 +135,7 @@ export type LocalJobSummary = Pick<
   | 'role'
   | 'status'
   | 'created_at'
+  | 'updated_at'
   | 'interview_date'
   | 'follow_up_at'
   | 'salary_min'
@@ -152,6 +153,7 @@ function toSummary(j: LocalJob): LocalJobSummary {
     role: j.role,
     status: j.status,
     created_at: j.created_at,
+    updated_at: j.updated_at ?? j.created_at,
     interview_date: j.interview_date ?? null,
     follow_up_at: j.follow_up_at ?? null,
     salary_min: j.salary_min ?? null,
@@ -172,7 +174,7 @@ export function localListJobs(): LocalJobSummary[] {
 export function localSaveJob(id: string, company: string, role: string, resumeId: string): void {
   const now = Math.floor(Date.now() / 1000);
   const jobs = getItems<LocalJob>(KEYS.jobs);
-  jobs.push({ id, company, role, resume_id: resumeId, status: 'draft', created_at: now });
+  jobs.push({ id, company, role, resume_id: resumeId, status: 'draft', created_at: now, updated_at: now });
   setItems(KEYS.jobs, jobs);
 }
 
