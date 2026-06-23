@@ -7,6 +7,7 @@ import { AuthProvider } from "@/components/auth-provider";
 import { AnalyticsProvider } from "@/components/posthog-provider";
 import { SaaSMakerFeedback } from "@/components/saasmaker-feedback";
 import { SiteNav } from "@/components/site-nav";
+import { VitalsReporter } from "@/components/VitalsReporter";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -72,6 +73,7 @@ export default function RootLayout({
             <SiteNav />
             {children}
           </AuthProvider>
+          <VitalsReporter />
         </AnalyticsProvider>
       </body>
     </html>
